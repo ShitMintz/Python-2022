@@ -12,3 +12,11 @@ print ("1792 hours in GtaV")
 print (2022+25)
 #print out how old you will be in 100 years
 print (15+100)
+#print the answer to 658 divided by 7
+print (658/7)
+#print how many years ago was the first moon landing
+print (2022-1969)
+#print out the name of your favourite game
+print ("Gta V")
+#print out your favourite class
+print ("Outdoor Ed")
