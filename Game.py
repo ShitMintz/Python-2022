@@ -15,3 +15,26 @@ shields = Room("You are in a shields room with two exits")
 hallway2 = Room("You are in a hallway with three exits")
 communications = Room("You are in a Communications room with one exit")
 storage = Room("You are in a storage room with three exits")
+hallway3 = Room("You are in a hallway with two exits")
+loweregine = Room("You are in the lower engine room with two exits")
+hallway4 = Room("You are in a hallway with four exits")
+reactor = Room("You are in a reactor room with one exits")
+security = Room("You are in a security room with one exit")
+upperengine = Room("You are in the Upper Engine room with two exits")
+hallway5 = Room("You are in a hallway with three exits")
+medbay = Room("You are in a medbay with one exit")
+hallway6 = Room("You are in a hallway with three exits")
+admin = Room("You are in a room with one exit")
+
+##########################
+#Room Connections
+##########################
+cafeteria.east = weapons
+cafeteria.south = hallway6
+cafeteria.west = hallway5
+hallway5.east = cafeteria
+hallway5.south = medbay
+hallway5.west = upperengine
+medbay.north = hallway5
+upperengine.east = hallway5
+upperengine.south = hallway4
