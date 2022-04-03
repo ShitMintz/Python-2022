@@ -24,8 +24,7 @@ bridge.south = escape
 mess.west = quarters
 quarters.north = airlock 
 
-#items
-Item.description = "" #make sure each item has a description
+#itemsItem.description = "" #make sure each item has a description
 keycard = Item("A red keycard","keycard","card","key","red keycard")
 keycard.description = "You look at the keycard and see that it is labelled, Escape Pod"
 
