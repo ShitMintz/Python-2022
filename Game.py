@@ -71,9 +71,48 @@ navigation.west = hallway1
 o2.east = hallway1
 weapons.south = hallway1
 weapons.east = cafeteria
+
 #########################
 #variables
 inventory = bag()
 current_room = space
 body_searched = False
 used_keycard = False
+
+
+#Binds
+@when("jump")
+def jump():
+	print("You jump")
+
+@when("enter airlock")
+@when("enter spaceship")
+@when("enter ship")
+def enter_airlock():
+	global current_room
+	if current_room == space:
+		print("You haul yourself into the airlock")
+		current_room = airlock
+	else:
+		print("There is no airlock here")
+	print(current_room)
+
+@when("go DIRECTION")
+@when("travel DIRECTION")
+def travel(direction):
+	global current_room
+	if direction in current_room.exits():
+		#checks if the current room list of exits has 
+		#the direction the player wants to go
+		current_room = current_room.exit(direction)
+		print(f"You go {direction}")
+		print(current_room)
+	else:
+		print("You can't go that way")
+
+def main():
+	print(current_room)
+	start()
+	#start the main loop
+
+main()
