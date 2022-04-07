@@ -6,7 +6,7 @@ Room.items = Bag()
 #Define Rooms
 ##########################
 space = Room("You are drifting in space and you see an abandoned ship flying around")
-cafeteria = Room("You are in a cafeteria wiht three exits")
+cafeteria = Room("You are in a cafeteria with three exits")
 weapons = Room("you are in a weapons room with two exits")
 hallway1 = Room("you are in a hallway with four exits")
 o2 = Room("You are in an O2 room with one exit")
@@ -70,7 +70,7 @@ hallway1.west = o2
 navigation.west = hallway1
 o2.east = hallway1
 weapons.south = hallway1
-weapons.east = cafeteria
+weapons.west = cafeteria
 
 #########################
 #variables
