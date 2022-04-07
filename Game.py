@@ -1,7 +1,7 @@
 from adventurelib import *
 
 
-
+Room.items = Bag()
 ##########################
 #Define Rooms
 ##########################
@@ -16,7 +16,7 @@ hallway2 = Room("You are in a hallway with three exits")
 communications = Room("You are in a Communications room with one exit")
 storage = Room("You are in a storage room with three exits")
 hallway3 = Room("You are in a hallway with two exits")
-loweregine = Room("You are in the lower engine room with two exits")
+lowerengine = Room("You are in the lower engine room with two exits")
 hallway4 = Room("You are in a hallway with four exits")
 reactor = Room("You are in a reactor room with one exits")
 security = Room("You are in a security room with one exit")
@@ -24,8 +24,8 @@ upperengine = Room("You are in the Upper Engine room with two exits")
 hallway5 = Room("You are in a hallway with three exits")
 medbay = Room("You are in a medbay with one exit")
 hallway6 = Room("You are in a hallway with three exits")
-admin = Room("You are in a room with one exit")
-
+admin = Room("You are in an admin room with one exit")
+electrical = Room("You are in a room with one exit")
 ##########################
 #Room Connections
 ##########################
@@ -40,7 +40,7 @@ upperengine.east = hallway5
 upperengine.south = hallway4
 hallway4.north = upperengine
 hallway4.east = security
-hallway4.south = loweregine
+hallway4.south = lowerengine
 hallway4.west = reactor
 reactor.east = hallway4
 security.west = hallway4
@@ -74,7 +74,7 @@ weapons.east = cafeteria
 
 #########################
 #variables
-inventory = bag()
+inventory = Bag()
 current_room = space
 body_searched = False
 used_keycard = False
@@ -87,12 +87,11 @@ def jump():
 
 @when("enter airlock")
 @when("enter spaceship")
-@when("enter ship")
 def enter_airlock():
 	global current_room
 	if current_room == space:
-		print("You haul yourself into the airlock")
-		current_room = airlock
+		print("You climb into the spaceship")
+		current_room = cafeteria
 	else:
 		print("There is no airlock here")
 	print(current_room)
@@ -109,6 +108,15 @@ def travel(direction):
 		print(current_room)
 	else:
 		print("You can't go that way")
+
+@when("look")
+def look():
+	print(current_room)
+	print("There are exits to the ",current_room.exits())
+	if len(current_room.items) > 0:
+		print("You also see:")
+		for item in current_room.items:
+			print(item)
 
 def main():
 	print(current_room)

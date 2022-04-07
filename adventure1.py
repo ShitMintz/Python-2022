@@ -19,8 +19,8 @@ docking.west = cargo
 hallway.north = cargo
 hallway.east = bridge
 hallway.south = mess
-hallway.west = airlock 
-bridge.south = escape
+hallway.west = airlock
+ bridge.south = escape
 mess.west = quarters
 quarters.north = airlock 
 
