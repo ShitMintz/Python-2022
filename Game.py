@@ -118,6 +118,63 @@ def look():
 		for item in current_room.items:
 			print(item)
 
+@when("get ITEM")
+@when("take ITEM")
+@when("pick up ITEM")
+def get_item(item):
+	#check if item is in room
+	#take it out of room
+	#put into inventory
+	#otherwise tell user there is no item
+	if item in current_room.items:
+		t = current_room.items.take(item)
+		print(t)
+		inventory.add(t)
+		print(f"You pick up the {item}")
+	else:
+		print(f"You don't see a {item}")
+
+#itemsItem.description
+keycard = Item("A brown keycard","keycard","card","key","brown keycard")
+keycard.description = "You look at the keycard and see that it is labelled, Admin"
+
+note = Item("A scribbled note","note","paper","code")
+note.description = "You look at the note. The numbers 4,2,6,9 are scribbled with the word navigation at the top"
+
+@when("look at ITEM")
+def look(item):
+	if item in inventory:
+		print(inventory.find(item).description)
+
+#add items to room
+o2.items.add(note)
+admin.items.add(keycard)
+
+@when("inventory")
+def check_inventory():
+	print("you are carrying")
+	for item in inventory:
+		print(item)
+
+@when("use ITEM")
+def use(item):
+	if inventory.find(item)==keycard and current_room == bridge:
+		print("You use the keycard and the escape pod slides open")
+		print("The escape pod stands open to the south")
+		bridge.south = escape
+	else:
+		print("You can't use that here")
+
+@when("type code")
+def escape_pod_win():
+	if "note" in inventory:
+		if current_room == navigation:
+			print("You enter the code and escape. You win")
+		else:
+			print("There is no where to enter the code")
+	else:
+		print("You don't have the code. You can't just guess it.")
+
 def main():
 	print(current_room)
 	start()
