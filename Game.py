@@ -165,7 +165,7 @@ def use(item):
 	else:
 		print("You can't use that here")
 
-@when("type code")
+@when("use code")
 def escape_pod_win():
 	if "note" in inventory:
 		if current_room == navigation:
