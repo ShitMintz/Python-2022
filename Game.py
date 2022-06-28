@@ -85,7 +85,7 @@ used_keycard = False
 def jump():
 	print("You jump")
 
-@when("enter airlock")
+@when("enter ship")
 @when("enter spaceship")
 def enter_airlock():
 	global current_room
@@ -158,22 +158,22 @@ def check_inventory():
 
 @when("use ITEM")
 def use(item):
-	if inventory.find(item)==keycard and current_room == bridge:
+	if inventory.find(item)==keycard and current_room == admin:
 		print("You use the keycard and the escape pod slides open")
 		print("The escape pod stands open to the south")
-		bridge.south = escape
+		admin.west = escape
+	elif item == "note" and "note" in inventory:
+		if current_room == navigation:
+			print("You enter the code and the ship starts up. You win")
+		else:
+			print("There is no where for you to enter the code")
+	elif item == "note":
+		print("You don't have the code.")
+
 	else:
 		print("You can't use that here")
 
-@when("use code")
-def escape_pod_win():
-	if "note" in inventory:
-		if current_room == navigation:
-			print("You enter the code and escape. You win")
-		else:
-			print("There is no where to enter the code")
-	else:
-		print("You don't have the code. You can't just guess it.")
+
 
 def main():
 	print(current_room)
